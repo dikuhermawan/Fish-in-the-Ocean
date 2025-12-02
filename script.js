@@ -31,18 +31,22 @@ const restartBtn = document.getElementById('restart-btn');
 // --- Event Tombol ---
 document.addEventListener('keydown', function(e) {
   if (e.code === 'Space') {
-    if (!gameOn) startGame();
+    // Jika sedang game over, restart (sembunyikan notifikasi skor)
+    if (gameOver) restartGame();
+    else if (!gameOn) startGame();
     fishFly();
     e.preventDefault();
   }
 });
 canvas.addEventListener('mousedown', () => {
-  if (!gameOn) startGame();
+  if (gameOver) restartGame();
+  else if (!gameOn) startGame();
   fishFly();
 });
 canvas.addEventListener('touchstart', evt => {
   evt.preventDefault();
-  if (!gameOn) startGame();
+  if (gameOver) restartGame();
+  else if (!gameOn) startGame();
   fishFly();
 });
 
@@ -52,6 +56,8 @@ restartBtn.onclick = restartGame;
 function startGame() {
   reset();
   gameOn = true;
+  // Pastikan apakah sebelumnya overlay game over tampil, kita sembunyikan
+  gameOverDiv.style.display = 'none';
   startText.style.display = 'none';
   interval = setInterval(loop, 1000/60); // ~60fps
 }
