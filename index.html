@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Flappy Fish</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <h2>Flappy Fish</h2>
+    <div id="game">
+      <!-- Udara dan laut digambar dengan canvas -->
+      <canvas id="gameCanvas" width="400" height="600"></canvas>
+      <div id="start-text">Tekan SPASI / Klik untuk Mulai</div>
+      <div id="score">0</div>
+      <div id="game-over" style="display: none;">
+        <div>Game Over!</div>
+        <div id="final-score"></div>
+        <button id="restart-btn">Main Lagi</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
